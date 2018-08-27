@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-export default class Login extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,13 +16,12 @@ export default class Login extends Component {
   }
 
   render() {
-    const { loggedInAs, isCreditCardHolder, setLoggedInAs } = this.props;
+    const { loggedInAs, isCreditCardHolder } = this.props;
 
     return (
       <div className="login">
         {!loggedInAs && <div>
           Log in as <input onChange={(e) => this.updateLoginName(e.target.value)} /> <button className="button"
-          onClick={() => setLoggedInAs(this.state.loginName)}
           >Go</button>
         </div>}
         {loggedInAs && <div>
@@ -31,3 +31,12 @@ export default class Login extends Component {
     )
   }
 };
+
+const mapStateToProps = state => {
+  return {
+    loggedInAs: state.loggedInAs,
+    isCreditCardHolder: state.isCreditCardHolder,
+  };
+};
+
+export default connect(mapStateToProps)(Login);

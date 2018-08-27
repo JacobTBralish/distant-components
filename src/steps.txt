@@ -1,0 +1,5 @@
+*Steps for redux
+
+    *READ
+        * Create store in store file
+        * In index.js, use provider and pass in store
