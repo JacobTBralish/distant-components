@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class CreditCardApplication extends Component {
   render() {
-    const { loggedInAs, isCreditCardHolder,setIsCreditCardHolder } = this.props;
+    const { loggedInAs, isCreditCardHolder, setIsCreditCardHolder } = this.props;
 
     return (
       <div className="credit-card-application">
