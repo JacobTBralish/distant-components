@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { login } from './ducks/reducer';
 
 class Login extends Component {
   constructor() {
@@ -16,12 +17,13 @@ class Login extends Component {
   }
 
   render() {
-    const { loggedInAs, isCreditCardHolder } = this.props;
+    const { loggedInAs, isCreditCardHolder, login } = this.props;
 
     return (
       <div className="login">
         {!loggedInAs && <div>
           Log in as <input onChange={(e) => this.updateLoginName(e.target.value)} /> <button className="button"
+          onClick={() => login(this.state.loginName)}
           >Go</button>
         </div>}
         {loggedInAs && <div>
@@ -39,4 +41,8 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Login);
+const mapDispatchToProps = {
+  login,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
